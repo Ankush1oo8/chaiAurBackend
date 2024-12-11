@@ -1,11 +1,12 @@
 // require ("dotenv").config(); this can cause code to look bad
 import dotenv from "dotenv"
-import express from "express"
-import connectDB from "./db/index.js";
-
 dotenv.config({
     path:'/.env'
 })
+import express from "express"
+import connectDB from "./db/index.js";
+import {app} from "./app.js"
+
 
 const port=process.env.PORT || 3000;
 
