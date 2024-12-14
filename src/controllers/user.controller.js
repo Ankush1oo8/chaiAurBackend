@@ -116,12 +116,12 @@ const loginUser = asyncHandler(async(req,res)=>{
     return res
     .status(200)
     .cookie("accessToken",accessToken,options)
-    .cookie("refreshToken",refreshToken,option)
+    .cookie("refreshToken",refreshToken,options)
     .json(
         200,
         {
             user:loggedInUser, accessToken,refreshToken
-        }
+        },
         "User has loggedIn successfully"
     )
 })
