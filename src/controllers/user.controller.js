@@ -234,14 +234,19 @@ const updateAccountDetails = asyncHandler(async(req,res)=>{
     }
 
     const user = await User.findByIdAndUpdate(
-        req.user._id,
+        req.user?._id,
         {
             $set:{fullname,email}
         },
         {
             new:true
         }
-    )
+    ).select("-password");
+
+    return res
+    .status(200)
+    .json(new ApiResponse(200,user,"Account details Updated"));
+
 })
 
 export {
@@ -250,5 +255,6 @@ export {
     logoutUser,
     refreshAccessToken,
     changeCurrentPassword,
-    getCurrentUser
+    getCurrentUser,
+    updateAccountDetails
     }
